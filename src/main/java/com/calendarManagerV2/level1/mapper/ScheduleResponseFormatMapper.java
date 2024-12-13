@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component("scheduleMapper")
+//@Component("scheduleMapper")
 public class ScheduleResponseFormatMapper implements ResponseFormatMaper<ScheduleResponseFormat, Schedule>{
 
     @Override

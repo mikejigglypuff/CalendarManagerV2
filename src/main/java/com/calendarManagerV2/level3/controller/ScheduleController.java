@@ -1,19 +1,19 @@
-package com.calendarManagerV2.level1.controller;
+package com.calendarManagerV2.level3.controller;
 
-import com.calendarManagerV2.level1.dto.requestdto.ScheduleDeleteReqDTO;
-import com.calendarManagerV2.level1.dto.requestdto.ScheduleGetReqDTO;
-import com.calendarManagerV2.level1.dto.requestdto.SchedulePatchReqDTO;
-import com.calendarManagerV2.level1.dto.requestdto.SchedulePostReqDTO;
-import com.calendarManagerV2.level1.dto.responsedto.ScheduleDeleteResDTO;
-import com.calendarManagerV2.level1.dto.responsedto.ScheduleGetResDTO;
-import com.calendarManagerV2.level1.dto.responsedto.SchedulePatchResDTO;
-import com.calendarManagerV2.level1.dto.responsedto.SchedulePostResDTO;
-import com.calendarManagerV2.level1.service.ScheduleService;
+import com.calendarManagerV2.level3.dto.requestdto.ScheduleDeleteReqDTO;
+import com.calendarManagerV2.level3.dto.requestdto.ScheduleGetReqDTO;
+import com.calendarManagerV2.level3.dto.requestdto.SchedulePatchReqDTO;
+import com.calendarManagerV2.level3.dto.requestdto.SchedulePostReqDTO;
+import com.calendarManagerV2.level3.dto.responsedto.ScheduleDeleteResDTO;
+import com.calendarManagerV2.level3.dto.responsedto.ScheduleGetResDTO;
+import com.calendarManagerV2.level3.dto.responsedto.SchedulePatchResDTO;
+import com.calendarManagerV2.level3.dto.responsedto.SchedulePostResDTO;
+import com.calendarManagerV2.level3.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-//@RestController
+@RestController
 @RequestMapping("/api/schedule")
 @RequiredArgsConstructor
 @Slf4j

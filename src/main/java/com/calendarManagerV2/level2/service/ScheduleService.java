@@ -1,12 +1,12 @@
-package com.calendarManagerV2.level1.service;
+package com.calendarManagerV2.level2.service;
 
-import com.calendarManagerV2.level1.dto.requestdto.ScheduleDeleteReqDTO;
-import com.calendarManagerV2.level1.dto.requestdto.ScheduleGetReqDTO;
-import com.calendarManagerV2.level1.dto.requestdto.SchedulePatchReqDTO;
-import com.calendarManagerV2.level1.dto.requestdto.SchedulePostReqDTO;
-import com.calendarManagerV2.level1.dto.responsedto.responseentity.ScheduleResponseFormat;
-import com.calendarManagerV2.level1.entity.Schedule;
-import com.calendarManagerV2.level1.mapper.ResponseFormatMaper;
+import com.calendarManagerV2.level2.dto.requestdto.ScheduleDeleteReqDTO;
+import com.calendarManagerV2.level2.dto.requestdto.ScheduleGetReqDTO;
+import com.calendarManagerV2.level2.dto.requestdto.SchedulePatchReqDTO;
+import com.calendarManagerV2.level2.dto.requestdto.SchedulePostReqDTO;
+import com.calendarManagerV2.level2.dto.responsedto.responseentity.ScheduleResponseFormat;
+import com.calendarManagerV2.level2.entity.Schedule;
+import com.calendarManagerV2.level2.mapper.ResponseFormatMapper;
 import com.calendarManagerV2.level2.repository.JpaScheduleRepositoryInterface;
 import com.calendarManagerV2.level2.repository.JpaUserRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,17 +15,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-//@Service
+@Service
 public class ScheduleService {
     private final JpaScheduleRepositoryInterface scheduleRepository;
     private final JpaUserRepositoryInterface userRepository;
-    private final ResponseFormatMaper<ScheduleResponseFormat, Schedule> mapper;
+    private final ResponseFormatMapper<ScheduleResponseFormat, Schedule> mapper;
 
     @Autowired
     public ScheduleService(
         JpaScheduleRepositoryInterface scheduleRepository,
         JpaUserRepositoryInterface userRepository,
-        @Qualifier("scheduleMapper") ResponseFormatMaper<ScheduleResponseFormat, Schedule> mapper
+        @Qualifier("scheduleMapper") ResponseFormatMapper<ScheduleResponseFormat, Schedule> mapper
     ) {
         this.scheduleRepository = scheduleRepository;
         this.userRepository = userRepository;
@@ -68,6 +68,6 @@ public class ScheduleService {
             return schedule.getTitle();
         }
 
-        return "삭제 실패";
+        return "일정 삭제 실패";
     }
 }
