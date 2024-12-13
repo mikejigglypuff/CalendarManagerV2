@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Table(name = "user")
 @NoArgsConstructor
 @Getter
-public class User {
+public class User extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "userID")
     private long userID;
@@ -27,6 +27,7 @@ public class User {
     @Column(name = "password", unique = true)
     private String password;
 
-    @Column(name = "createdAt")
-    private LocalDateTime createdAt;
+    public User(long userID) {
+        this.userID = userID;
+    }
 }

@@ -1,15 +1,18 @@
 package com.calendarManagerV2.level1.entity;
 
+import com.calendarManagerV2.level1.dto.requestdto.SchedulePostReqDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "schedule")
 @NoArgsConstructor
 @Getter
-public class Schedule {
+public class Schedule extends BaseEntity {
     @Id @GeneratedValue
     @Column(name = "scheduleID")
     private long scheduleID;
@@ -27,9 +30,23 @@ public class Schedule {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "createdAt")
-    private String createdAt;
-
     @Column(name = "updatedAt")
-    private String updatedAt;
+    private LocalDateTime updatedAt;
+
+    public Schedule(SchedulePostReqDTO dto) {
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+    }
+
+    @Override
+    public void prePersist() {
+        LocalDateTime now = LocalDateTime.now();
+        createdAt = now;
+        updatedAt = now;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 }
