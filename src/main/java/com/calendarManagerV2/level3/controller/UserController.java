@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level3.controller;
 
 import com.calendarManagerV2.level3.dto.requestdto.UserDeleteReqDTO;
@@ -13,8 +14,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
-@RequestMapping("/api/user")
+//@RestController
+//@RequestMapping(path = "/api/user")
 @RequiredArgsConstructor
 @Slf4j
 public class UserController {
@@ -45,3 +46,5 @@ public class UserController {
         return new UserDeleteResDTO(service.deleteUser(dto));
     }
 }
+
+ */

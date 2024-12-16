@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.service;
 
 import com.calendarManagerV2.level2.dto.requestdto.UserDeleteReqDTO;
@@ -64,3 +65,5 @@ public class UserService {
         return "사용자 삭제 실패";
     }
 }
+
+ */

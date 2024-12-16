@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level1.dto.responsedto.responseentity;
 
 import com.calendarManagerV2.level1.entity.Schedule;
@@ -23,3 +24,5 @@ public class ScheduleResponseFormat {
         this.updatedAt = schedule.getUpdatedAt();
     }
 }
+
+ */

@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level1.dto.responsedto;
 
 
@@ -23,3 +24,5 @@ public class ScheduleGetResDTO {
         message = schedules.size() + "개의 일정을 조회했습니다.";
     }
 }
+
+ */

@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.mapper;
 
 import com.calendarManagerV2.level2.dto.responsedto.responseentity.ScheduleResponseFormat;
@@ -6,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component("scheduleMapper")
+//@Component("scheduleMapper")
 public class ScheduleResponseFormatMapper implements ResponseFormatMapper<ScheduleResponseFormat, Schedule> {
 
     @Override
@@ -16,3 +17,5 @@ public class ScheduleResponseFormatMapper implements ResponseFormatMapper<Schedu
             .toList();
     }
 }
+
+ */

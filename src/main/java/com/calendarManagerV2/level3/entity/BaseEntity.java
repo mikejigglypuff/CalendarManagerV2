@@ -10,9 +10,9 @@ import java.time.LocalDateTime;
 
 @Getter
 @RequiredArgsConstructor
-@MappedSuperclass
+//@MappedSuperclass
 public class BaseEntity {
-    @Column(updatable = false)
+    @Column(name="createdAt", updatable = false)
     protected LocalDateTime createdAt;
 
     @PrePersist

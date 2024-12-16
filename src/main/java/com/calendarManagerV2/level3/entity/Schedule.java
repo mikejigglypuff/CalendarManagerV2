@@ -8,8 +8,8 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "schedule")
+//@Entity
+//@Table(name = "schedule")
 @NoArgsConstructor
 @Getter
 public class Schedule extends BaseEntity {

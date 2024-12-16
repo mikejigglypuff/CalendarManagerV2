@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.dto.responsedto;
 
 import com.calendarManagerV2.level2.dto.responsedto.responseentity.UserResponseFormat;
@@ -13,3 +14,5 @@ public class UserPostResDTO {
         this.message = "환영합니다, " + userFormat.getUsername() + ".";
     }
 }
+
+ */

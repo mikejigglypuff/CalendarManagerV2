@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.dto.responsedto;
 
 import com.calendarManagerV2.level2.dto.responsedto.responseentity.UserResponseFormat;
@@ -22,3 +23,5 @@ public class UserGetResDTO {
         this.message = "1명의 사용자를 조회했습니다.";
     }
 }
+
+ */

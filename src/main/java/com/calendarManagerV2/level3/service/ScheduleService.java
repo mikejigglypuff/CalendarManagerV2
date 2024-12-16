@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level3.service;
 
 import com.calendarManagerV2.level3.dto.requestdto.ScheduleDeleteReqDTO;
@@ -71,3 +72,5 @@ public class ScheduleService {
         return "일정 삭제 실패";
     }
 }
+
+ */

@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level3.repository;
 
 import com.calendarManagerV2.level3.entity.User;
@@ -7,3 +8,5 @@ public interface JpaUserRepositoryInterface extends JpaRepository<User, Long> {
     User findFirstByUserID(long userID);
     User findFirstByEmail(String email);
 }
+
+ */

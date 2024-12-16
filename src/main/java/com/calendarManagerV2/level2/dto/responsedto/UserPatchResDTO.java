@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.dto.responsedto;
 
 import com.calendarManagerV2.level2.dto.responsedto.responseentity.UserResponseFormat;
@@ -11,3 +12,5 @@ public class UserPatchResDTO {
         this.message = userFormat.getUsername() + "님의 회원정보가 수정되었습니다.";
     }
 }
+
+ */

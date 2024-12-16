@@ -1,7 +1,9 @@
 package com.calendarManagerV2.level3.dto.responsedto;
 
 import com.calendarManagerV2.level3.dto.responsedto.responseentity.UserResponseFormat;
+import lombok.Getter;
 
+@Getter
 public class UserPatchResDTO {
     private final String message;
     private final UserResponseFormat userFormat;

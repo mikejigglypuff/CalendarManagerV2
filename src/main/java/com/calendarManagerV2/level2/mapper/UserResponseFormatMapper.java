@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.mapper;
 
 import com.calendarManagerV2.level2.dto.responsedto.responseentity.UserResponseFormat;
@@ -6,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component("userMapper")
+//@Component("userMapper")
 public class UserResponseFormatMapper implements ResponseFormatMapper<UserResponseFormat, User> {
 
     @Override
@@ -16,3 +17,5 @@ public class UserResponseFormatMapper implements ResponseFormatMapper<UserRespon
             .toList();
     }
 }
+
+ */

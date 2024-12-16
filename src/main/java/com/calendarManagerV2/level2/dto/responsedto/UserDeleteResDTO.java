@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.dto.responsedto;
 
 import com.calendarManagerV2.level2.dto.responsedto.responseentity.UserResponseFormat;
@@ -11,3 +12,5 @@ public class UserDeleteResDTO {
         this.message = username + "님의 탈퇴가 완료되었습니다.";
     }
 }
+
+ */

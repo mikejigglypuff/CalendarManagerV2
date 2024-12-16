@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.entity;
 
 import com.calendarManagerV2.level2.dto.requestdto.SchedulePostReqDTO;
@@ -50,3 +51,5 @@ public class Schedule extends BaseEntity {
         updatedAt = LocalDateTime.now();
     }
 }
+
+ */

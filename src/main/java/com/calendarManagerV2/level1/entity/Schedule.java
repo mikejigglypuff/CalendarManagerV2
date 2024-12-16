@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level1.entity;
 
 import com.calendarManagerV2.level1.dto.requestdto.SchedulePostReqDTO;
@@ -9,7 +10,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 //@Entity
-@Table(name = "schedule")
+//@Table(name = "schedule")
 @NoArgsConstructor
 @Getter
 public class Schedule extends BaseEntity {
@@ -50,3 +51,5 @@ public class Schedule extends BaseEntity {
         updatedAt = LocalDateTime.now();
     }
 }
+
+ */

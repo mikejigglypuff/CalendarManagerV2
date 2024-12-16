@@ -6,8 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
-@Table(name = "user")
+//@Entity
+//@Table(name = "user")
 @NoArgsConstructor
 @Getter
 public class User extends BaseEntity {

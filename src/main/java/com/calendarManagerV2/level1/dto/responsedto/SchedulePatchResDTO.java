@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level1.dto.responsedto;
 
 import com.calendarManagerV2.level1.dto.responsedto.responseentity.ScheduleResponseFormat;
@@ -13,3 +14,5 @@ public class SchedulePatchResDTO {
         this.message = "1개의 일정을 수정했습니다.";
     }
 }
+
+ */

@@ -1,6 +1,7 @@
+/*
 package com.calendarManagerV2.level2.repository;
 
-import com.calendarManagerV2.level2.entity.Schedule;
+import com.calendarManagerV2.level3.entity.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface JpaScheduleRepositoryInterface extends JpaRepository<Schedule, Long> {
@@ -8,3 +9,5 @@ public interface JpaScheduleRepositoryInterface extends JpaRepository<Schedule, 
 
     Schedule findFirstByScheduleID(long scheduleID);
 }
+
+ */

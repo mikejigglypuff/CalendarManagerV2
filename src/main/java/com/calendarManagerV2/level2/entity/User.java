@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level2.entity;
 
 import com.calendarManagerV2.level2.dto.requestdto.UserPostReqDTO;
@@ -36,3 +37,5 @@ public class User extends BaseEntity {
         this.password = dto.getPassword();
     }
 }
+
+ */

@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level1.service;
 
 import com.calendarManagerV2.level1.dto.requestdto.ScheduleDeleteReqDTO;
@@ -7,8 +8,8 @@ import com.calendarManagerV2.level1.dto.requestdto.SchedulePostReqDTO;
 import com.calendarManagerV2.level1.dto.responsedto.responseentity.ScheduleResponseFormat;
 import com.calendarManagerV2.level1.entity.Schedule;
 import com.calendarManagerV2.level1.mapper.ResponseFormatMaper;
-import com.calendarManagerV2.level2.repository.JpaScheduleRepositoryInterface;
-import com.calendarManagerV2.level2.repository.JpaUserRepositoryInterface;
+import com.calendarManagerV2.repository.JpaScheduleRepositoryInterface;
+import com.calendarManagerV2.repository.JpaUserRepositoryInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -71,3 +72,5 @@ public class ScheduleService {
         return "삭제 실패";
     }
 }
+
+ */

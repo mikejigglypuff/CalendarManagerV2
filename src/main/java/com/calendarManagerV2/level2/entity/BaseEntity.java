@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
+/*
 @Getter
 @RequiredArgsConstructor
 @MappedSuperclass
@@ -20,3 +21,5 @@ public class BaseEntity {
         createdAt = LocalDateTime.now();
     }
 }
+
+ */

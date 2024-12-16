@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level1.entity;
 
 import jakarta.persistence.*;
@@ -7,7 +8,7 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-//@Entity
+@Entity
 @Table(name = "user")
 @NoArgsConstructor
 @Getter
@@ -31,3 +32,5 @@ public class User extends BaseEntity {
         this.userID = userID;
     }
 }
+
+ */
