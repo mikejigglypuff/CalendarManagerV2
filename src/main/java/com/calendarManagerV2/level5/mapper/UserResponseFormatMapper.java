@@ -1,12 +1,12 @@
-package com.calendarManagerV2.level4.mapper;
+package com.calendarManagerV2.level5.mapper;
 
-import com.calendarManagerV2.level4.dto.responsedto.responseentity.UserResponseFormat;
-import com.calendarManagerV2.level4.entity.User;
+import com.calendarManagerV2.level5.dto.responsedto.responseentity.UserResponseFormat;
+import com.calendarManagerV2.level5.entity.User;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//@Component("userMapper")
+@Component("userMapper")
 public class UserResponseFormatMapper implements ResponseFormatMapper<UserResponseFormat, User> {
 
     @Override

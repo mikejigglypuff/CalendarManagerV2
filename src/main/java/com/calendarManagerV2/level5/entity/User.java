@@ -1,15 +1,15 @@
-package com.calendarManagerV2.level4.entity;
+package com.calendarManagerV2.level5.entity;
 
-import com.calendarManagerV2.level4.dto.requestdto.UserPostReqDTO;
+import com.calendarManagerV2.level5.dto.requestdto.UserPostReqDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.Objects;
 
-//@Entity
-//@Table(name = "user")
+@Entity
+@Table(name = "user")
 @NoArgsConstructor
 @Getter
 public class User extends BaseEntity {
@@ -42,5 +42,21 @@ public class User extends BaseEntity {
     public void prePersist() {
         super.prePersist();
         userID = (userID == null) ? 1 : userID;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof User comp) {
+            return Objects.equals(this.userID, comp.getUserID()) && Objects.equals(this.username, comp.getUsername())
+                && Objects.equals(this.email, comp.getEmail()) && Objects.equals(this.password, comp.getPassword())
+                && Objects.equals(this.createdAt, comp.getCreatedAt());
+        }
+
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userID + username + email + password + createdAt);
     }
 }

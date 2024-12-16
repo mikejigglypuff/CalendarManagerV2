@@ -1,7 +1,7 @@
-package com.calendarManagerV2.level4.filter;
+package com.calendarManagerV2.level5.filter;
 
-import com.calendarManagerV2.level4.enums.SessionValidationWhiteList;
-import com.calendarManagerV2.level4.exception.NotValidSessionException;
+import com.calendarManagerV2.level5.enums.SessionValidationWhiteList;
+import com.calendarManagerV2.level5.exception.NotValidSessionException;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-//@Component
-//@WebFilter("/*")
-//@Order(1)
+@Component
+@WebFilter("/*")
+@Order(1)
 @Slf4j
 public class SessionValidationFilter implements Filter {
     @Override

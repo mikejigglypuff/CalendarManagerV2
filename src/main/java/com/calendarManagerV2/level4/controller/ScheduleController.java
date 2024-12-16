@@ -1,3 +1,4 @@
+/*
 package com.calendarManagerV2.level4.controller;
 
 import com.calendarManagerV2.level4.dto.requestdto.ScheduleDeleteReqDTO;
@@ -45,3 +46,5 @@ public class ScheduleController {
         return new ScheduleDeleteResDTO(service.deleteSchedule(dto));
     }
 }
+
+ */

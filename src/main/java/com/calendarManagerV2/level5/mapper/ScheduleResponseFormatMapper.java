@@ -1,12 +1,12 @@
-package com.calendarManagerV2.level4.mapper;
+package com.calendarManagerV2.level5.mapper;
 
-import com.calendarManagerV2.level4.dto.responsedto.responseentity.ScheduleResponseFormat;
-import com.calendarManagerV2.level4.entity.Schedule;
+import com.calendarManagerV2.level5.dto.responsedto.responseentity.ScheduleResponseFormat;
+import com.calendarManagerV2.level5.entity.Schedule;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-//@Component("scheduleMapper")
+@Component("scheduleMapper")
 public class ScheduleResponseFormatMapper implements ResponseFormatMapper<ScheduleResponseFormat, Schedule> {
 
     @Override
