@@ -1,11 +1,11 @@
-/*
-package com.calendarManagerV2.level5.service;
+package com.calendarManagerV2.level6.service;
 
-import com.calendarManagerV2.level5.dto.requestdto.*;
-import com.calendarManagerV2.level5.dto.responsedto.responseentity.UserResponseFormat;
-import com.calendarManagerV2.level5.entity.User;
-import com.calendarManagerV2.level5.mapper.ResponseFormatMapper;
-import com.calendarManagerV2.level5.repository.JpaUserRepositoryInterface;
+import com.calendarManagerV2.level6.config.PasswordEncoder;
+import com.calendarManagerV2.level6.dto.requestdto.*;
+import com.calendarManagerV2.level6.dto.responsedto.responseentity.UserResponseFormat;
+import com.calendarManagerV2.level6.entity.User;
+import com.calendarManagerV2.level6.mapper.ResponseFormatMapper;
+import com.calendarManagerV2.level6.repository.JpaUserRepositoryInterface;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
@@ -18,13 +18,16 @@ import java.util.NoSuchElementException;
 public class UserService {
     private final JpaUserRepositoryInterface repository;
     private final ResponseFormatMapper<UserResponseFormat, User> mapper;
+    private final PasswordEncoder encoder;
 
     public UserService(
         JpaUserRepositoryInterface repository,
-        @Qualifier("userMapper") ResponseFormatMapper<UserResponseFormat, User> mapper
+        @Qualifier("userMapper") ResponseFormatMapper<UserResponseFormat, User> mapper,
+        PasswordEncoder encoder
     ) {
         this.repository = repository;
         this.mapper = mapper;
+        this.encoder = encoder;
     }
 
     @Transactional(rollbackFor = {DataAccessException.class})
@@ -39,7 +42,9 @@ public class UserService {
 
     @Transactional(rollbackFor = {DataAccessException.class})
     public UserResponseFormat addUser(UserPostReqDTO dto) {
-        return new UserResponseFormat(repository.save(new User(dto)));
+        User user = new User(dto);
+        user.setPassword(encoder.encode(dto.getPassword()));
+        return new UserResponseFormat(repository.save(user));
     }
 
     @Transactional(rollbackFor = {DataAccessException.class})
@@ -69,13 +74,13 @@ public class UserService {
     }
 
     public User loginUser(LoginReqDTO dto) {
-        User user = repository.findFirstByEmailAndPassword(dto.getEmail(), dto.getPassword());
+        User user = repository.findFirstByEmail(dto.getEmail());
 
         // aop로 분리할 것
-        if(user == null) throw new NoSuchElementException("이메일 또는 패스워드가 틀렸습니다.");
+        if(user == null) throw new NoSuchElementException("존재하지 않는 이메일입니다.");
+        if(!encoder.matches(dto.getPassword(), user.getPassword()))
+            throw new NoSuchElementException("패스워드가 일치하지 않습니다.");
 
         return user;
     }
 }
-
- */

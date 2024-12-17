@@ -1,16 +1,14 @@
-/*
-package com.calendarManagerV2.level5.controller;
+package com.calendarManagerV2.level6.controller;
 
-import com.calendarManagerV2.level5.annotation.UserIDValidation;
-import com.calendarManagerV2.level5.dto.requestdto.UserDeleteReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.UserGetReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.UserPatchReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.UserPostReqDTO;
-import com.calendarManagerV2.level5.dto.responsedto.UserDeleteResDTO;
-import com.calendarManagerV2.level5.dto.responsedto.UserGetResDTO;
-import com.calendarManagerV2.level5.dto.responsedto.UserPatchResDTO;
-import com.calendarManagerV2.level5.dto.responsedto.UserPostResDTO;
-import com.calendarManagerV2.level5.service.UserService;
+import com.calendarManagerV2.level6.dto.requestdto.UserDeleteReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.UserGetReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.UserPatchReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.UserPostReqDTO;
+import com.calendarManagerV2.level6.dto.responsedto.UserDeleteResDTO;
+import com.calendarManagerV2.level6.dto.responsedto.UserGetResDTO;
+import com.calendarManagerV2.level6.dto.responsedto.UserPatchResDTO;
+import com.calendarManagerV2.level6.dto.responsedto.UserPostResDTO;
+import com.calendarManagerV2.level6.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Positive;
@@ -50,5 +48,3 @@ public class UserController extends AbstractController {
         return new UserDeleteResDTO(service.deleteUser(dto, getSessionUser(req)));
     }
 }
-
- */

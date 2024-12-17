@@ -1,4 +1,4 @@
-package com.calendarManagerV2.level5.entity;
+package com.calendarManagerV2.level6.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @RequiredArgsConstructor
-//@MappedSuperclass
+@MappedSuperclass
 public class BaseEntity {
     @Column(name="createdAt", updatable = false)
     protected LocalDateTime createdAt;

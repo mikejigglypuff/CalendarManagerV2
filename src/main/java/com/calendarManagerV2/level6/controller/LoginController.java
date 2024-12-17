@@ -1,11 +1,10 @@
-/*
-package com.calendarManagerV2.level5.controller;
+package com.calendarManagerV2.level6.controller;
 
-import com.calendarManagerV2.level5.dto.requestdto.LoginReqDTO;
-import com.calendarManagerV2.level5.dto.responsedto.LoginResDTO;
-import com.calendarManagerV2.level5.dto.responsedto.LogoutResDTO;
-import com.calendarManagerV2.level5.entity.User;
-import com.calendarManagerV2.level5.service.UserService;
+import com.calendarManagerV2.level6.dto.requestdto.LoginReqDTO;
+import com.calendarManagerV2.level6.dto.responsedto.LoginResDTO;
+import com.calendarManagerV2.level6.dto.responsedto.LogoutResDTO;
+import com.calendarManagerV2.level6.entity.User;
+import com.calendarManagerV2.level6.service.UserService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -45,5 +44,3 @@ public class LoginController {
         return new LogoutResDTO();
     }
 }
-
- */

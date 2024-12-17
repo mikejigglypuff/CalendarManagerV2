@@ -1,6 +1,6 @@
-package com.calendarManagerV2.level5.entity;
+package com.calendarManagerV2.level6.entity;
 
-import com.calendarManagerV2.level5.dto.requestdto.SchedulePostReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.SchedulePostReqDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,8 +8,8 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-//@Entity
-//@Table(name = "schedule")
+@Entity
+@Table(name = "schedule")
 @NoArgsConstructor
 @Getter
 public class Schedule extends BaseEntity {

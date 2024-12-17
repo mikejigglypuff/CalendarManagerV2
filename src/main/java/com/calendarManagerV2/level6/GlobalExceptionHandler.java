@@ -1,5 +1,6 @@
-package com.calendarManagerV2.level5.exception;
+package com.calendarManagerV2.level6;
 
+import com.calendarManagerV2.level6.exception.NotValidSessionException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
 import lombok.extern.slf4j.Slf4j;
@@ -13,6 +14,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 @ControllerAdvice
 @Slf4j
@@ -23,6 +25,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler({
+        NoSuchElementException.class,
         IllegalArgumentException.class,
         ConstraintViolationException.class,
         DataIntegrityViolationException.class,

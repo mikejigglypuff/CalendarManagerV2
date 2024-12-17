@@ -1,15 +1,14 @@
-/*
-package com.calendarManagerV2.level5.controller;
+package com.calendarManagerV2.level6.controller;
 
-import com.calendarManagerV2.level5.dto.requestdto.ScheduleDeleteReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.ScheduleGetReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.SchedulePatchReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.SchedulePostReqDTO;
-import com.calendarManagerV2.level5.dto.responsedto.ScheduleDeleteResDTO;
-import com.calendarManagerV2.level5.dto.responsedto.ScheduleGetResDTO;
-import com.calendarManagerV2.level5.dto.responsedto.SchedulePatchResDTO;
-import com.calendarManagerV2.level5.dto.responsedto.SchedulePostResDTO;
-import com.calendarManagerV2.level5.service.ScheduleService;
+import com.calendarManagerV2.level6.dto.requestdto.ScheduleDeleteReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.ScheduleGetReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.SchedulePatchReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.SchedulePostReqDTO;
+import com.calendarManagerV2.level6.dto.responsedto.ScheduleDeleteResDTO;
+import com.calendarManagerV2.level6.dto.responsedto.ScheduleGetResDTO;
+import com.calendarManagerV2.level6.dto.responsedto.SchedulePatchResDTO;
+import com.calendarManagerV2.level6.dto.responsedto.SchedulePostResDTO;
+import com.calendarManagerV2.level6.service.ScheduleService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -48,5 +47,3 @@ public class ScheduleController extends AbstractController {
         return new ScheduleDeleteResDTO(service.deleteSchedule(dto, getSessionUser(req)));
     }
 }
-
- */

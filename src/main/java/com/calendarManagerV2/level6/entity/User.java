@@ -1,6 +1,6 @@
-package com.calendarManagerV2.level5.entity;
+package com.calendarManagerV2.level6.entity;
 
-import com.calendarManagerV2.level5.dto.requestdto.UserPostReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.UserPostReqDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,8 +8,8 @@ import lombok.Setter;
 
 import java.util.Objects;
 
-//@Entity
-//@Table(name = "user")
+@Entity
+@Table(name = "user")
 @NoArgsConstructor
 @Getter
 public class User extends BaseEntity {
@@ -25,6 +25,7 @@ public class User extends BaseEntity {
     @Column(name = "email", unique = true)
     private String email;
 
+    @Setter
     @Column(name = "password", unique = true)
     private String password;
 

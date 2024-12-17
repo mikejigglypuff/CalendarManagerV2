@@ -1,18 +1,16 @@
-/*
-package com.calendarManagerV2.level5.service;
+package com.calendarManagerV2.level6.service;
 
-import com.calendarManagerV2.level5.dto.requestdto.ScheduleDeleteReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.ScheduleGetReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.SchedulePatchReqDTO;
-import com.calendarManagerV2.level5.dto.requestdto.SchedulePostReqDTO;
-import com.calendarManagerV2.level5.dto.responsedto.responseentity.ScheduleResponseFormat;
-import com.calendarManagerV2.level5.entity.Schedule;
-import com.calendarManagerV2.level5.entity.User;
-import com.calendarManagerV2.level5.mapper.ResponseFormatMapper;
-import com.calendarManagerV2.level5.repository.JpaScheduleRepositoryInterface;
-import com.calendarManagerV2.level5.repository.JpaUserRepositoryInterface;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpSession;
+import com.calendarManagerV2.level6.config.PasswordEncoder;
+import com.calendarManagerV2.level6.dto.requestdto.ScheduleDeleteReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.ScheduleGetReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.SchedulePatchReqDTO;
+import com.calendarManagerV2.level6.dto.requestdto.SchedulePostReqDTO;
+import com.calendarManagerV2.level6.dto.responsedto.responseentity.ScheduleResponseFormat;
+import com.calendarManagerV2.level6.entity.Schedule;
+import com.calendarManagerV2.level6.entity.User;
+import com.calendarManagerV2.level6.mapper.ResponseFormatMapper;
+import com.calendarManagerV2.level6.repository.JpaScheduleRepositoryInterface;
+import com.calendarManagerV2.level6.repository.JpaUserRepositoryInterface;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -28,16 +26,19 @@ public class ScheduleService {
     private final JpaScheduleRepositoryInterface scheduleRepository;
     private final JpaUserRepositoryInterface userRepository;
     private final ResponseFormatMapper<ScheduleResponseFormat, Schedule> mapper;
+    private final PasswordEncoder encoder;
 
     @Autowired
     public ScheduleService(
         JpaScheduleRepositoryInterface scheduleRepository,
         JpaUserRepositoryInterface userRepository,
-        @Qualifier("scheduleMapper") ResponseFormatMapper<ScheduleResponseFormat, Schedule> mapper
+        @Qualifier("scheduleMapper") ResponseFormatMapper<ScheduleResponseFormat, Schedule> mapper,
+        PasswordEncoder encoder
     ) {
         this.scheduleRepository = scheduleRepository;
         this.userRepository = userRepository;
         this.mapper = mapper;
+        this.encoder = encoder;
     }
 
     @Transactional(rollbackFor = {DataAccessException.class})
@@ -70,7 +71,6 @@ public class ScheduleService {
             if (content != null) schedule.setContent(content);
         }
 
-        // 패스워드 불일치 시 예외를 던지는 방식으로 수정할 것
         return new ScheduleResponseFormat(scheduleRepository.save(schedule));
     }
 
@@ -86,5 +86,3 @@ public class ScheduleService {
         return "일정 삭제 실패";
     }
 }
-
- */
