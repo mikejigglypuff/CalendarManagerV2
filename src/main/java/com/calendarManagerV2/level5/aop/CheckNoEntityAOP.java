@@ -1,7 +1,5 @@
 package com.calendarManagerV2.level5.aop;
 
-import com.calendarManagerV2.level5.entity.Schedule;
-import com.calendarManagerV2.level5.entity.User;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -16,7 +14,7 @@ import java.util.List;
 public class CheckNoEntityAOP {
     @AfterReturning(
         pointcut = "execution(* org.springframework.data.jpa.repository.JpaRepository+.*(..))"
-            + " && !execution(* org.springframework.data.jpa.repository.JpaRepository+.findAll(..))",
+            + " && !execution(java.util.List org.springframework.data.jpa.repository.JpaRepository+.*(..))",
         returning = "result"
     )
     public void checkNullFind(Object result) {
@@ -24,10 +22,10 @@ public class CheckNoEntityAOP {
     }
 
     @AfterReturning(
-        pointcut = "execution(* org.springframework.data.jpa.repository.JpaRepository+.findAll(..))",
-        returning = "result"
+        pointcut = "execution(java.util.List org.springframework.data.jpa.repository.JpaRepository+.*(..))",
+        returning = "resultList"
     )
-    public void checkEmptyFindAll(List<Object> result) {
-        if(result.isEmpty()) throw new EntityNotFoundException("해당하는 값이 없습니다.");
+    public void checkEmptyFindAll(List<?> resultList) {
+        if(resultList.isEmpty()) throw new EntityNotFoundException("해당하는 값이 없습니다.");
     }
 }
