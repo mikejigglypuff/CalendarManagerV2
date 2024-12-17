@@ -13,9 +13,9 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
-@Component
-@WebFilter("/*")
-@Order(1)
+//@Component
+//@WebFilter("/*")
+//@Order(1)
 @Slf4j
 public class SessionValidationFilter implements Filter {
     @Override

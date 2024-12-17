@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component("commentMapper")
+//@Component("commentMapper")
 public class CommentResponseFormatMapper implements ResponseFormatMapper<CommentResponseFormat, Comment> {
 
     @Override

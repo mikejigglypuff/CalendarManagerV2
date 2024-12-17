@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 @Slf4j
 public class CheckNoEntityAOP {
     @AfterReturning(
