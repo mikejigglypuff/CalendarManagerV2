@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component("userMapper")
+//@Component("userMapper")
 public class UserResponseFormatMapper implements ResponseFormatMapper<UserResponseFormat, User> {
 
     @Override
