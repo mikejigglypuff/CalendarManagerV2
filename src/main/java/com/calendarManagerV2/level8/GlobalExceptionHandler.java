@@ -17,7 +17,6 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 @ControllerAdvice
-@Slf4j
 public class GlobalExceptionHandler {
     @ExceptionHandler(NotValidSessionException.class)
     public ResponseEntity<String> handleNotValidSessionException(NotValidSessionException e) {

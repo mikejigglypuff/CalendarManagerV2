@@ -46,10 +46,10 @@ public class ScheduleService {
     }
 
     @Transactional(rollbackFor = {DataAccessException.class})
-    public List<ScheduleResponseFormat> findAllSchedules() {
-        List<Schedule> schedules = scheduleRepository.findAll();
-        log.info(String.valueOf(schedules.isEmpty()));
-        return mapper.mapList(schedules);
+    public List<ScheduleResponseFormat> findAllSchedules(PaginationReqDTO pageDTO) {
+        if(pageDTO.isPaging())
+            return mapper.mapList(scheduleRepository.findAllBy(PageRequest.of(pageDTO.getOffset(), pageDTO.getSize())));
+        return mapper.mapList(scheduleRepository.findAll());
     }
 
     @Transactional(rollbackFor = {DataAccessException.class})

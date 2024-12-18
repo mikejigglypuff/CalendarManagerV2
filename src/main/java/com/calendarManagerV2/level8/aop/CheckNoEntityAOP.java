@@ -10,7 +10,6 @@ import java.util.List;
 
 @Aspect
 @Component
-@Slf4j
 public class CheckNoEntityAOP {
     @AfterReturning(
         pointcut = "execution(* org.springframework.data.jpa.repository.JpaRepository+.*(..))"

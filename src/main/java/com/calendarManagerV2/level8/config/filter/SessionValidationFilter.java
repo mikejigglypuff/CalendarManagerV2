@@ -34,7 +34,7 @@ public class SessionValidationFilter implements Filter {
 
     private boolean isWhiteList(HttpServletRequest req) {
         SessionValidationWhiteList findValidatePattern = SessionValidationWhiteList.findRequestPattern(req);
-        log.info("uri: " + req.getRequestURI() + ", method: " + req.getMethod());
+
         return findValidatePattern != null;
     }
 

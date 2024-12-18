@@ -36,8 +36,8 @@ public class ScheduleController extends AbstractController {
 
     @Operation(summary = "모든 일정 조회")
     @GetMapping
-    public ScheduleGetResDTO getAllSchedules() {
-        return new ScheduleGetResDTO(service.findAllSchedules());
+    public ScheduleGetResDTO getAllSchedules(@Valid @ModelAttribute PaginationReqDTO dto) {
+        return new ScheduleGetResDTO(service.findAllSchedules(dto));
     }
 
     @Operation(summary = "일정 등록")
