@@ -1,0 +1,25 @@
+spring:
+  application.name: calendarManagerV2
+  datasource:
+    password: purin
+    username: root
+    url: jdbc:mysql://localhost:3306/calendarManagerV2
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  
+  # JPA Settings
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+
+springdoc:
+  packages-to-scan: com.calendarManagerV2.level8
+  default-consumes-media-type: application/json;charset=UTF-8
+  default-produces-media-type: application/json;charset=UTF-8

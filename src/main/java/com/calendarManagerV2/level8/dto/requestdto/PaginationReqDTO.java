@@ -1,10 +1,12 @@
 package com.calendarManagerV2.level8.dto.requestdto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import lombok.Getter;
 
 @Getter
+@Schema(description = "선택 항목", nullable = true)
 public class PaginationReqDTO {
     @PositiveOrZero
     private final Integer offset;

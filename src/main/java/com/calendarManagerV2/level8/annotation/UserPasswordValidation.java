@@ -1,5 +1,6 @@
 package com.calendarManagerV2.level8.annotation;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Payload;
 import jakarta.validation.ReportAsSingleViolation;
 import jakarta.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ import java.lang.annotation.Target;
 @ReportAsSingleViolation
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
+@Schema(description = "필수 항목")
 public @interface UserPasswordValidation {
     String message() default "패스워드 값이 없거나 형식이 올바르지 않습니다.";
     Class<?>[] groups() default {};

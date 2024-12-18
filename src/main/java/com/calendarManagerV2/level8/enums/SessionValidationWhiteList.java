@@ -9,7 +9,12 @@ import java.util.Arrays;
 @Getter
 public enum SessionValidationWhiteList {
     REGISTER("/api/user", HttpMethod.POST),
-    LOGIN("/api/login", HttpMethod.POST);
+    LOGIN("/api/login", HttpMethod.POST),
+    API_DOCUMENT("/v3/api-docs", HttpMethod.GET),
+    API_REGEX("^/v3/api-docs(/.*)?$", HttpMethod.GET),
+    FAV_ICO("/favicon.ico", HttpMethod.GET),
+    SWAGGER_UI("/swagger-ui.html", HttpMethod.GET),
+    SWAGGER_REGEX("^/swagger-ui(/.*)?$", HttpMethod.GET);
 
     private final String uri;
     private final String method;
@@ -22,7 +27,8 @@ public enum SessionValidationWhiteList {
     public static SessionValidationWhiteList findRequestPattern(HttpServletRequest req) {
         return Arrays.stream(values())
             .filter(val -> (
-                val.getUri().equals(req.getRequestURI())) && val.getMethod().equals(req.getMethod())
+                (val.getUri().equals(req.getRequestURI())) || req.getRequestURI().matches(val.getUri()))
+                    && val.getMethod().equals(req.getMethod())
             ).findFirst().orElse(null);
     }
 

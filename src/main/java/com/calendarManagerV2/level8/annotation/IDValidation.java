@@ -1,5 +1,6 @@
 package com.calendarManagerV2.level8.annotation;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Payload;
 import jakarta.validation.ReportAsSingleViolation;
 import jakarta.validation.constraints.NotNull;
@@ -16,6 +17,7 @@ import java.lang.annotation.Target;
 @NotNull(message = "ID 값이 포함되어야 합니다.")
 @Positive(message = "ID 값은 양의 정수여야 합니다.")
 @ReportAsSingleViolation
+@Schema(description = "필수 필드")
 @Target({ElementType.FIELD, ElementType.METHOD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IDValidation {
