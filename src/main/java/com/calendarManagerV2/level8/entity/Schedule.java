@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "schedule")
@@ -30,6 +31,9 @@ public class Schedule extends BaseEntity {
     @Setter
     @Column(name = "content")
     private String content;
+
+    @OneToMany(mappedBy = "schedule")
+    private List<Comment> commentList;
 
     @Column(name = "updatedAt")
     private LocalDateTime updatedAt;

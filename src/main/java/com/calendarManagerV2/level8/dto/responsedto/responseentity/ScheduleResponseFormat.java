@@ -12,6 +12,7 @@ public class ScheduleResponseFormat {
     private final String username;
     private final String title;
     private final String content;
+    private final int commentCount;
     private final LocalDateTime createdAt;
     private final LocalDateTime updatedAt;
 
@@ -20,6 +21,7 @@ public class ScheduleResponseFormat {
         this.username = schedule.getUser().getUsername();
         this.title = schedule.getTitle();
         this.content = schedule.getContent();
+        this.commentCount = schedule.getCommentList().size();
         this.createdAt = schedule.getCreatedAt();
         this.updatedAt = schedule.getUpdatedAt();
     }
