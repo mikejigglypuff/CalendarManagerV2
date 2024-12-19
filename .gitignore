@@ -38,4 +38,4 @@ out/
 
 ### Spring boot ###
 *.properties
-application.yml
+*.yml
