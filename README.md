@@ -107,6 +107,18 @@ JDBC로 구현했던 기존 일정 관리 앱과 달리 JPA를 이용해 더 객
   - UI 적용된 API 문서: /swagger-ui.html
     ![UIDocs](doc/img/UIDocs.png)
 
+#### 7. HTTP Request & Response Logging
+- Filter를 통해 HTTP 요청 및 응답을 로깅하도록 구현하였다.
+
+
+- 요청 로깅
+  ![logReq](doc/img/request/logReq.png)
+
+
+- 응답 로깅
+  ![logRes](doc/img/response/logRes.png)
+
+
 ### TroubleShooting
 
 [TroubleShooting 기록들](https://velog.io/@mikejigglypuf/series/%EC%9D%BC%EC%A0%95-%EA%B4%80%EB%A6%AC-%EC%95%B1-V2-TroubleShooting)

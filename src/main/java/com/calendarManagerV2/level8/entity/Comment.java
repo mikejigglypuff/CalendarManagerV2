@@ -19,12 +19,12 @@ public class Comment extends BaseEntity {
     private long commentID;
 
     @Setter
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userID")
     private User user;
 
     @Setter
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "scheduleID")
     private Schedule schedule;
 

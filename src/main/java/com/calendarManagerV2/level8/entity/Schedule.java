@@ -19,7 +19,7 @@ public class Schedule extends BaseEntity {
     private long scheduleID;
 
     @Setter
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userID")
     private User user;
 
