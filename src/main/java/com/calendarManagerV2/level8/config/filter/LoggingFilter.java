@@ -20,7 +20,7 @@ import java.nio.charset.StandardCharsets;
 @WebFilter("/*")
 @Order(2)
 @Slf4j
-public class RequestWrapperFilter extends OncePerRequestFilter {
+public class LoggingFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain filterChain) throws ServletException, IOException {
         ContentCachingRequestWrapper wrappedReq = new ContentCachingRequestWrapper(req);
@@ -30,19 +30,19 @@ public class RequestWrapperFilter extends OncePerRequestFilter {
         logRequest(wrappedReq);
         logResponse(wrappedRes);
 
-        // 응답 본문 복사
+        // 응답 본문이 로깅으로 소비되어 클라이언트에 전송되지 않는 현상 방지
         wrappedRes.copyBodyToResponse();
     }
-    
+
     private void logRequest(ContentCachingRequestWrapper wrappedReq) throws IOException {
         log.info("Request URI: {}, Request Method: {}", wrappedReq.getRequestURI(), wrappedReq.getMethod());
-        String requestBody = new String(wrappedReq.getContentAsByteArray(), wrappedReq.getCharacterEncoding());
-        log.info("Request Body: {}", requestBody);
+        log.info("Current Session: {}, Request Session ID: {}", wrappedReq.getSession(), wrappedReq.getRequestedSessionId());
+        log.info("Request Body: {}", new String(wrappedReq.getContentAsByteArray(), wrappedReq.getCharacterEncoding()));
     }
 
     private void logResponse(ContentCachingResponseWrapper wrappedRes) throws IOException {
         log.info("Response Status: {}", wrappedRes.getStatus());
-        String responseBody = new String(wrappedRes.getContentAsByteArray(), StandardCharsets.UTF_8);
-        log.info("Response Body: {}", responseBody);
+        // 요청과 달리 응답 로깅 시에는 인코딩이 깨질 수 있어 강제로 UTF-8 사용하도록 함
+        log.info("Response Body: {}", new String(wrappedRes.getContentAsByteArray(), StandardCharsets.UTF_8));
     }
 }

@@ -3,7 +3,6 @@ package com.calendarManagerV2.level8;
 import com.calendarManagerV2.level8.exception.NotValidSessionException;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolationException;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
 
+// 프로젝트 전역에서 발생한 예외들에 대해 알맞은 Response Status 및 메시지를 붙여 응답하도록 함
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(NotValidSessionException.class)
@@ -50,6 +50,7 @@ public class GlobalExceptionHandler {
         return makeStringResBody(HttpStatus.NOT_FOUND, e.getMessage());
     }
 
+    // 반복되는 ResponseEntity 설정 코드 간소화
     private ResponseEntity<String> makeStringResBody(HttpStatus status, String body) {
         return ResponseEntity.status(status).body(body);
     }

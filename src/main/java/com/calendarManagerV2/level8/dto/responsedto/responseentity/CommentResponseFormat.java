@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+// Comment의 User, Schedule를 그대로 전달하는 대신 username, scheduleID만 전달하도록 하는 응답 형식
 @Getter
 public class CommentResponseFormat {
     private final long commentID;

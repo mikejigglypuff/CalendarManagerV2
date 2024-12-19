@@ -13,6 +13,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+// 모든 테이블의 식별자 검증 사항 및 실패 메시지 관리용 애노테이션
 @ConstraintComposition(CompositionType.AND)
 @NotNull(message = "ID 값이 포함되어야 합니다.")
 @Positive(message = "ID 값은 양의 정수여야 합니다.")
@@ -22,6 +23,8 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface IDValidation {
     String message() default "ID 값이 없거나 형식이 올바르지 않습니다.";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

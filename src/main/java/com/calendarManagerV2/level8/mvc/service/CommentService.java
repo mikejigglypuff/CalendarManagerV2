@@ -11,7 +11,6 @@ import com.calendarManagerV2.level8.entity.User;
 import com.calendarManagerV2.level8.mvc.repository.JpaCommentRepositoryInterface;
 import com.calendarManagerV2.level8.mvc.repository.JpaScheduleRepositoryInterface;
 import com.calendarManagerV2.level8.mvc.repository.JpaUserRepositoryInterface;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
@@ -21,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Slf4j
 public class CommentService {
     private final JpaCommentRepositoryInterface commentRepository;
     private final JpaScheduleRepositoryInterface scheduleRepository;
@@ -41,6 +39,7 @@ public class CommentService {
         this.mapper = mapper;
     }
 
+    // Query Method 기반 Repository를 사용하므로 Service 계층에서 Transaction Rollback 담당
     @Transactional(rollbackFor = {DataAccessException.class})
     public List<CommentResponseFormat> findAllComment() {
         return mapper.mapList(commentRepository.findAll());
@@ -63,7 +62,8 @@ public class CommentService {
     public CommentResponseFormat updateComment(CommentPatchReqDTO dto, User sessionUser) {
         Comment comment = commentRepository.getFirstByCommentID(dto.getCommentID());
 
-        if(sessionUser.equals(comment.getUser())) {
+        // 작성자와 수정 요청을 보낸 회원이 동일한지 확인
+        if (sessionUser.equals(comment.getUser())) {
             comment.setContent(dto.getContent());
         }
 
@@ -74,7 +74,8 @@ public class CommentService {
     public String deleteComment(CommentDeleteReqDTO dto, User sessionUser) {
         Comment comment = commentRepository.getFirstByCommentID(dto.getCommentID());
 
-        if(sessionUser.equals(comment.getUser())) {
+        // 작성자와 삭제 요청을 보낸 사람이 동일한지 확인
+        if (sessionUser.equals(comment.getUser())) {
             commentRepository.delete(comment);
             return "댓글" + dto.getCommentID() + " 삭제 완료";
         }

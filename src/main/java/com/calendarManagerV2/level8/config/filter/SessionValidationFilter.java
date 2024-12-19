@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 
+// 세션 검증 및 검증 실패 시 401 응답을 전송하도록 하는 필터
+// SessionValidationWhiteList에 정의된 URL들은 검증 제외
 @Component
 @WebFilter("/*")
 @Order(1)
@@ -25,11 +27,11 @@ public class SessionValidationFilter implements Filter {
 
         boolean passedChecks = true;
 
-        if(!isWhiteList(req)) {
+        if (!isWhiteList(req)) {
             passedChecks = checkValidSession(req.getSession(false), req.getRequestedSessionId(), res);
         }
 
-        if(passedChecks) chain.doFilter(request, response);
+        if (passedChecks) chain.doFilter(request, response);
     }
 
     private boolean isWhiteList(HttpServletRequest req) {
@@ -46,7 +48,6 @@ public class SessionValidationFilter implements Filter {
             if (!session.getId().equals(requestID)) throw new NotValidSessionException("유효하지 않은 세션");
             return true;
         } catch (NotValidSessionException e) {
-            log.info("세션: {}, 요청 세션 ID: {}\n{}", session, requestID, e.getMessage());
             res.setContentType("application/json");
             res.setCharacterEncoding("utf-8");
             res.setStatus(401);

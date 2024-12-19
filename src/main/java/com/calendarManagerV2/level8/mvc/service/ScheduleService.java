@@ -7,7 +7,6 @@ import com.calendarManagerV2.level8.entity.Schedule;
 import com.calendarManagerV2.level8.entity.User;
 import com.calendarManagerV2.level8.mvc.repository.JpaScheduleRepositoryInterface;
 import com.calendarManagerV2.level8.mvc.repository.JpaUserRepositoryInterface;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.DataAccessException;
@@ -18,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-@Slf4j
 public class ScheduleService {
     private final JpaScheduleRepositoryInterface scheduleRepository;
     private final JpaUserRepositoryInterface userRepository;
@@ -37,17 +35,19 @@ public class ScheduleService {
 
     @Transactional(rollbackFor = {DataAccessException.class})
     public List<ScheduleResponseFormat> findScheduleByUserID(ScheduleGetReqDTO getDTO, PaginationReqDTO pageDTO) {
-        if(pageDTO.isPaging())
+        // 요청이 페이징을 요구했는지 확인해 각각 다른 방식의 쿼리를 실행하도록 함
+        if (pageDTO.isPaging())
             return mapper.mapList(
-                scheduleRepository.findAllPagingByUser_UserIDOrderByUpdatedAtDesc (
+                scheduleRepository.findAllPagingByUser_UserIDOrderByUpdatedAtDesc(
                     getDTO.getUserID(), PageRequest.of(pageDTO.getOffset(), pageDTO.getSize())
-            ));
+                ));
         return mapper.mapList(scheduleRepository.findAllByUser_UserIDOrderByUpdatedAtDesc(getDTO.getUserID()));
     }
 
     @Transactional(rollbackFor = {DataAccessException.class})
     public List<ScheduleResponseFormat> findAllSchedules(PaginationReqDTO pageDTO) {
-        if(pageDTO.isPaging())
+        // 요청이 페이징을 요구했는지 확인해 각각 다른 방식의 쿼리를 실행하도록 함
+        if (pageDTO.isPaging())
             return mapper.mapList(scheduleRepository.findAllBy(PageRequest.of(pageDTO.getOffset(), pageDTO.getSize())));
         return mapper.mapList(scheduleRepository.findAll());
     }
@@ -63,7 +63,8 @@ public class ScheduleService {
     public ScheduleResponseFormat updateSchedule(SchedulePatchReqDTO dto, User sessionUser) {
         Schedule schedule = scheduleRepository.findFirstByScheduleID(dto.getScheduleID());
 
-        if(sessionUser.equals(schedule.getUser())) {
+        // 작성자와 수정 요청을 보낸 회원이 동일한지 확인
+        if (sessionUser.equals(schedule.getUser())) {
             String title = dto.getTitle();
             String content = dto.getContent();
             if (title != null) schedule.setTitle(title);
@@ -77,7 +78,8 @@ public class ScheduleService {
     public String deleteSchedule(ScheduleDeleteReqDTO dto, User sessionUser) {
         Schedule schedule = scheduleRepository.findFirstByScheduleID(dto.getScheduleID());
 
-        if(schedule.getUser().equals(sessionUser)) {
+        // 작성자와 삭제 요청을 보낸 회원이 동일한지 확인
+        if (schedule.getUser().equals(sessionUser)) {
             scheduleRepository.delete(schedule);
             return schedule.getTitle() + " 일정을 삭제했습니다.";
         }

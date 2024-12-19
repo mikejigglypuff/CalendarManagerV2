@@ -12,14 +12,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/schedule")
 @RequiredArgsConstructor
-@Slf4j
-@Tag(name = "일정 API", description = "일정 관련 API, 사용 시 로그인 필요")
+@Tag(name = "일정 API", description = "일정 관련 API, 접근 시 로그인 필요")
 public class ScheduleController extends AbstractController {
     private final ScheduleService service;
 

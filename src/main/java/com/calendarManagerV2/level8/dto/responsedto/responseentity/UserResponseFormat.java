@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+// 클라이언트에 회원 패스워드를 노출하지 않기 위한 응답 형식
 @Getter
 public class UserResponseFormat {
     private final long userID;

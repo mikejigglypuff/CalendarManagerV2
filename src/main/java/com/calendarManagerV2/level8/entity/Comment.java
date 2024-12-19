@@ -13,7 +13,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 public class Comment extends BaseEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "commentID")
     private long commentID;
 
@@ -39,6 +40,7 @@ public class Comment extends BaseEntity {
         this.content = dto.getContent();
     }
 
+    // createdAt, updatedAt 모두에 대한 Auditing을 구현하는 상위 클래스 도입 고민 중
     @Override
     public void prePersist() {
         super.prePersist();

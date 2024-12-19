@@ -6,6 +6,7 @@ import org.springframework.http.HttpMethod;
 
 import java.util.Arrays;
 
+// 세션 검사에서 제외할 요청 형식들의 목록을 정의
 @Getter
 public enum SessionValidationWhiteList {
     REGISTER("/api/user", HttpMethod.POST),
@@ -26,9 +27,9 @@ public enum SessionValidationWhiteList {
 
     public static SessionValidationWhiteList findRequestPattern(HttpServletRequest req) {
         return Arrays.stream(values())
-            .filter(val -> (
+            .filter(val -> ( // 문자열이 일치하지 않는 경우에만 정규식 수행하도록 함
                 (val.getUri().equals(req.getRequestURI())) || req.getRequestURI().matches(val.getUri()))
-                    && val.getMethod().equals(req.getMethod())
+                && val.getMethod().equals(req.getMethod())
             ).findFirst().orElse(null);
     }
 

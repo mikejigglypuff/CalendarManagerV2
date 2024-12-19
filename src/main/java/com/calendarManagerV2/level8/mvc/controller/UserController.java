@@ -15,14 +15,12 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/user")
 @RequiredArgsConstructor
-@Slf4j
-@Tag(name = "유저 API", description = "유저 CRUD API, 기본적으로 로그인 필요")
+@Tag(name = "유저 API", description = "유저 CRUD API, POST를 제외한 메서드로 접근 시 로그인 필요")
 public class UserController extends AbstractController {
     private final UserService service;
 

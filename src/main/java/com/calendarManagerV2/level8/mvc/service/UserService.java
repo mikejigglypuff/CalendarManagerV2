@@ -51,12 +51,13 @@ public class UserService {
     public UserResponseFormat updateUser(UserPatchReqDTO dto, User sessionUser) {
         User user = repository.findFirstByEmail(dto.getEmail());
 
-        if(user.equals(sessionUser)) {
+        // 수정 요청을 보낸 회원 자신의 정보를 수정하는 것인지 확인
+        if (user.equals(sessionUser)) {
             String username = dto.getUsername();
             String email = dto.getEmail();
 
-            if(username != null) user.setUsername(username);
-            if(email != null) user.setEmail(email);
+            if (username != null) user.setUsername(username);
+            if (email != null) user.setEmail(email);
         }
         return new UserResponseFormat(repository.save(user));
     }
@@ -65,7 +66,8 @@ public class UserService {
     public String deleteUser(UserDeleteReqDTO dto, User sessionUser) {
         User user = repository.findFirstByUserID(dto.getUserID());
 
-        if(user.equals(sessionUser)) {
+        // 회원 자신을 탈퇴 처리하는 것인지 확인
+        if (user.equals(sessionUser)) {
             repository.delete(user);
             return user.getUsername() + "님의 탈퇴가 완료되었습니다.";
         }
@@ -76,9 +78,8 @@ public class UserService {
     public User loginUser(LoginReqDTO dto) {
         User user = repository.findFirstByEmail(dto.getEmail());
 
-        // aop로 분리할 것
-        if(user == null) throw new NoSuchElementException("존재하지 않는 이메일입니다.");
-        if(!encoder.matches(dto.getPassword(), user.getPassword()))
+        // 암호화된 패스워드와 요청 패스워드 일치 확인
+        if (!encoder.matches(dto.getPassword(), user.getPassword()))
             throw new NoSuchElementException("패스워드가 일치하지 않습니다.");
 
         return user;

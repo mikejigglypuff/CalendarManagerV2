@@ -5,6 +5,7 @@ import lombok.Getter;
 
 import java.time.LocalDateTime;
 
+// Schedule의 User 전체 대신 username만 전달하도록 하는 응답 형식
 @Getter
 public class ScheduleResponseFormat {
     private final long scheduleID;

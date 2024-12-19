@@ -13,7 +13,8 @@ import java.util.Objects;
 @NoArgsConstructor
 @Getter
 public class User extends BaseEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "userID")
     private Long userID;
 
@@ -45,9 +46,10 @@ public class User extends BaseEntity {
         userID = (userID == null) ? 1 : userID;
     }
 
+    // 세션의 값으로 저장되는 User 클래스의 동등성 비교를 위해 구현
     @Override
     public boolean equals(Object o) {
-        if(o instanceof User comp) {
+        if (o instanceof User comp) {
             return Objects.equals(this.userID, comp.getUserID()) && Objects.equals(this.username, comp.getUsername())
                 && Objects.equals(this.email, comp.getEmail()) && Objects.equals(this.password, comp.getPassword())
                 && Objects.equals(this.createdAt, comp.getCreatedAt());
