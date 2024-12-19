@@ -23,3 +23,5 @@ springdoc:
   packages-to-scan: com.calendarManagerV2.level8
   default-consumes-media-type: application/json;charset=UTF-8
   default-produces-media-type: application/json;charset=UTF-8
+
+# test
