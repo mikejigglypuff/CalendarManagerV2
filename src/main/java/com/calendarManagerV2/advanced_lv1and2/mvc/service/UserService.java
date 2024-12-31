@@ -1,7 +1,7 @@
 package com.calendarManagerV2.advanced_lv1and2.mvc.service;
 
 import com.calendarManagerV2.advanced_lv1and2.config.PasswordEncoder;
-import com.calendarManagerV2.advanced_lv1and2.dto.request.*;
+import com.calendarManagerV2.advanced_lv1and2.dto.request.LoginReqDTO;
 import com.calendarManagerV2.advanced_lv1and2.dto.request.user.UserDeleteReqDTO;
 import com.calendarManagerV2.advanced_lv1and2.dto.request.user.UserGetReqDTO;
 import com.calendarManagerV2.advanced_lv1and2.dto.request.user.UserPatchReqDTO;
@@ -10,7 +10,7 @@ import com.calendarManagerV2.advanced_lv1and2.dto.response.mapper.ResponseFormat
 import com.calendarManagerV2.advanced_lv1and2.dto.response.responseentity.UserResponseFormat;
 import com.calendarManagerV2.advanced_lv1and2.entity.User;
 import com.calendarManagerV2.advanced_lv1and2.mvc.repository.JpaUserRepositoryInterface;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,20 +19,11 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
+@RequiredArgsConstructor
 public class UserService {
     private final JpaUserRepositoryInterface repository;
     private final ResponseFormatMapper<UserResponseFormat, User> mapper;
     private final PasswordEncoder encoder;
-
-    public UserService(
-        JpaUserRepositoryInterface repository,
-        @Qualifier("userMapper") ResponseFormatMapper<UserResponseFormat, User> mapper,
-        PasswordEncoder encoder
-    ) {
-        this.repository = repository;
-        this.mapper = mapper;
-        this.encoder = encoder;
-    }
 
     @Transactional(rollbackFor = {DataAccessException.class})
     public UserResponseFormat findUserByUserID(UserGetReqDTO dto) {
@@ -56,13 +47,7 @@ public class UserService {
         User user = repository.findFirstByEmail(dto.getEmail());
 
         // 수정 요청을 보낸 회원 자신의 정보를 수정하는 것인지 확인
-        if (user.equals(sessionUser)) {
-            String username = dto.getUsername();
-            String email = dto.getEmail();
-
-            if (username != null) user.setUsername(username);
-            if (email != null) user.setEmail(email);
-        }
+        if (user.equals(sessionUser)) user.setUserByPatchDTO(dto);
         return new UserResponseFormat(repository.save(user));
     }
 

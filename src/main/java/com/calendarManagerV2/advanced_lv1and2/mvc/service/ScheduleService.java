@@ -1,6 +1,6 @@
 package com.calendarManagerV2.advanced_lv1and2.mvc.service;
 
-import com.calendarManagerV2.advanced_lv1and2.dto.request.*;
+import com.calendarManagerV2.advanced_lv1and2.dto.request.PaginationReqDTO;
 import com.calendarManagerV2.advanced_lv1and2.dto.request.schedule.ScheduleDeleteReqDTO;
 import com.calendarManagerV2.advanced_lv1and2.dto.request.schedule.ScheduleGetReqDTO;
 import com.calendarManagerV2.advanced_lv1and2.dto.request.schedule.SchedulePatchReqDTO;
@@ -11,8 +11,7 @@ import com.calendarManagerV2.advanced_lv1and2.entity.Schedule;
 import com.calendarManagerV2.advanced_lv1and2.entity.User;
 import com.calendarManagerV2.advanced_lv1and2.mvc.repository.JpaScheduleRepositoryInterface;
 import com.calendarManagerV2.advanced_lv1and2.mvc.repository.JpaUserRepositoryInterface;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -21,21 +20,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class ScheduleService {
     private final JpaScheduleRepositoryInterface scheduleRepository;
     private final JpaUserRepositoryInterface userRepository;
     private final ResponseFormatMapper<ScheduleResponseFormat, Schedule> mapper;
-
-    @Autowired
-    public ScheduleService(
-        JpaScheduleRepositoryInterface scheduleRepository,
-        JpaUserRepositoryInterface userRepository,
-        @Qualifier("scheduleMapper") ResponseFormatMapper<ScheduleResponseFormat, Schedule> mapper
-    ) {
-        this.scheduleRepository = scheduleRepository;
-        this.userRepository = userRepository;
-        this.mapper = mapper;
-    }
 
     @Transactional(rollbackFor = {DataAccessException.class})
     public List<ScheduleResponseFormat> findScheduleByUserID(ScheduleGetReqDTO getDTO, PaginationReqDTO pageDTO) {
@@ -68,13 +57,7 @@ public class ScheduleService {
         Schedule schedule = scheduleRepository.findFirstByScheduleID(dto.getScheduleID());
 
         // 작성자와 수정 요청을 보낸 회원이 동일한지 확인
-        if (sessionUser.equals(schedule.getUser())) {
-            String title = dto.getTitle();
-            String content = dto.getContent();
-            if (title != null) schedule.setTitle(title);
-            if (content != null) schedule.setContent(content);
-        }
-
+        if (sessionUser.equals(schedule.getUser())) schedule.setScheduleByPatchDTO(dto);
         return new ScheduleResponseFormat(scheduleRepository.save(schedule));
     }
 

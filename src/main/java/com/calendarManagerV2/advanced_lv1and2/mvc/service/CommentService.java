@@ -11,8 +11,7 @@ import com.calendarManagerV2.advanced_lv1and2.entity.User;
 import com.calendarManagerV2.advanced_lv1and2.mvc.repository.JpaCommentRepositoryInterface;
 import com.calendarManagerV2.advanced_lv1and2.mvc.repository.JpaScheduleRepositoryInterface;
 import com.calendarManagerV2.advanced_lv1and2.mvc.repository.JpaUserRepositoryInterface;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,24 +19,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class CommentService {
     private final JpaCommentRepositoryInterface commentRepository;
     private final JpaScheduleRepositoryInterface scheduleRepository;
     private final JpaUserRepositoryInterface userRepository;
     private final ResponseFormatMapper<CommentResponseFormat, Comment> mapper;
-
-    @Autowired
-    public CommentService(
-        JpaCommentRepositoryInterface commentRepository,
-        JpaScheduleRepositoryInterface scheduleRepository,
-        JpaUserRepositoryInterface userRepository,
-        @Qualifier("commentMapper") ResponseFormatMapper<CommentResponseFormat, Comment> mapper
-    ) {
-        this.commentRepository = commentRepository;
-        this.scheduleRepository = scheduleRepository;
-        this.userRepository = userRepository;
-        this.mapper = mapper;
-    }
 
     // Query Method 기반 Repository를 사용하므로 Service 계층에서 Transaction Rollback 담당
     @Transactional(rollbackFor = {DataAccessException.class})

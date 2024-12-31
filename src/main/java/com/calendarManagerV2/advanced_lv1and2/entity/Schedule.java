@@ -1,5 +1,6 @@
 package com.calendarManagerV2.advanced_lv1and2.entity;
 
+import com.calendarManagerV2.advanced_lv1and2.dto.request.schedule.SchedulePatchReqDTO;
 import com.calendarManagerV2.advanced_lv1and2.dto.request.schedule.SchedulePostReqDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -24,11 +25,9 @@ public class Schedule extends BaseEntity {
     @JoinColumn(name = "userID")
     private User user;
 
-    @Setter
     @Column(name = "title")
     private String title;
 
-    @Setter
     @Column(name = "content")
     private String content;
 
@@ -41,6 +40,13 @@ public class Schedule extends BaseEntity {
     public Schedule(SchedulePostReqDTO dto) {
         this.title = dto.getTitle();
         this.content = dto.getContent();
+    }
+
+    public void setScheduleByPatchDTO(SchedulePatchReqDTO dto) {
+        String title = dto.getTitle();
+        String content = dto.getContent();
+        if (title != null) this.title = title;
+        if (content != null) this.content = content;
     }
 
     // createdAt, updatedAt 모두에 대한 Auditing을 구현하는 상위 클래스 도입 고민 중

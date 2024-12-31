@@ -36,7 +36,6 @@ public class Comment extends BaseEntity {
     private LocalDateTime updatedAt;
 
     public Comment(CommentPostReqDTO dto) {
-
         this.content = dto.getContent();
     }
 

@@ -1,5 +1,6 @@
 package com.calendarManagerV2.advanced_lv1and2.entity;
 
+import com.calendarManagerV2.advanced_lv1and2.dto.request.user.UserPatchReqDTO;
 import com.calendarManagerV2.advanced_lv1and2.dto.request.user.UserPostReqDTO;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -18,11 +19,9 @@ public class User extends BaseEntity {
     @Column(name = "userID")
     private Long userID;
 
-    @Setter
     @Column(name = "username")
     private String username;
 
-    @Setter
     @Column(name = "email", unique = true)
     private String email;
 
@@ -38,6 +37,14 @@ public class User extends BaseEntity {
         this.username = dto.getUsername();
         this.email = dto.getEmail();
         this.password = dto.getPassword();
+    }
+
+    public void setUserByPatchDTO(UserPatchReqDTO dto) {
+        String username = dto.getUsername();
+        String email = dto.getEmail();
+
+        if (username != null) this.username = username;
+        if (email != null) this.email = email;
     }
 
     @Override
