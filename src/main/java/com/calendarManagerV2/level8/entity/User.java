@@ -8,8 +8,8 @@ import lombok.Setter;
 
 import java.util.Objects;
 
-@Entity
-@Table(name = "user")
+//@Entity
+//@Table(name = "user")
 @NoArgsConstructor
 @Getter
 public class User extends BaseEntity {

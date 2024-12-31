@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 // 생성될 API 문서의 기초적인 정보 설정
-@Configuration
+//@Configuration
 public class OpenApiConfig {
     @Bean
     public OpenAPI customOpenAPI() {

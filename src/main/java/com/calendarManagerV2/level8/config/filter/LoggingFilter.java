@@ -16,9 +16,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 // getReader()로 요청 Body를 여러 번 읽을 수 있도록 요청을 래핑하는 필터
-@Component
-@WebFilter("/*")
-@Order(2)
+//@Component
+//@WebFilter("/*")
+//@Order(2)
 @Slf4j
 public class LoggingFilter extends OncePerRequestFilter {
     @Override

@@ -9,8 +9,8 @@ import java.util.List;
 
 // 쿼리 결과가 null 또는 빈 컬렉션일 경우 ControllerAdvice가 처리하기 용이하도록
 // 커스텀 예외를 던지는 AOP
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class CheckNoEntityAOP {
     @AfterReturning(
         pointcut = "execution(* org.springframework.data.jpa.repository.JpaRepository+.*(..))"

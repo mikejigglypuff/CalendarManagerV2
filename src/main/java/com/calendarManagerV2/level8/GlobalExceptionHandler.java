@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 
 // 프로젝트 전역에서 발생한 예외들에 대해 알맞은 Response Status 및 메시지를 붙여 응답하도록 함
-@ControllerAdvice
+//@ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(NotValidSessionException.class)
     public ResponseEntity<String> handleNotValidSessionException(NotValidSessionException e) {

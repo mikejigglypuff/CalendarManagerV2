@@ -15,9 +15,9 @@ import java.io.IOException;
 
 // 세션 검증 및 검증 실패 시 401 응답을 전송하도록 하는 필터
 // SessionValidationWhiteList에 정의된 URL들은 검증 제외
-@Component
-@WebFilter("/*")
-@Order(1)
+//@Component
+//@WebFilter("/*")
+//@Order(1)
 @Slf4j
 public class SessionValidationFilter implements Filter {
     @Override

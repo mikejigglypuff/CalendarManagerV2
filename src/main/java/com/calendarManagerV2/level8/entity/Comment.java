@@ -8,8 +8,8 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "comment")
+//@Entity
+//@Table(name = "comment")
 @NoArgsConstructor
 @Getter
 public class Comment extends BaseEntity {
